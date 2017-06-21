@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Credit Card Type</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    		<style type="text/css" media="screen">
+    			body {font-family: "Open Sans", serif;}
+    			h1 {
+	font-family: "Open Sans";
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+h3 {
+	font-family: "Open Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+p {
+	font-family: "Open Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+    		</style>
+        <script type="text/javascript">
+ 
+			function SetTypeText(number)
+			{
+				var typeField = document.getElementById("cardType");
+				typeField.innerHTML = creditCardType(number);
+			}
+		        function creditCardType(number)
+		        {            
+		            var re = new RegExp("^4");
+		            if (number.match(re) != null)
+		                return "Visa";
+		 
+		            re = new RegExp("^(34|37)");
+		            if (number.match(re) != null)
+		                return "American Express";
+		 
+		            re = new RegExp("^5[1-5]");
+		            if (number.match(re) != null)
+		                return "MasterCard";
+		 
+		            re = new RegExp("^6011");
+		            if (number.match(re) != null)
+		                return "Discover";
+		 
+		            return "";
+		        }
+
+		</script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+       <h1>Credit Card Type</h1>
+	    <form>
+	      <input id="ccNumber" onChange="SetTypeText(this.value)" />
+	      <br />
+	      <div id="cardType"></div>
+	    </form>
+
+
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    </body>
+</html>
